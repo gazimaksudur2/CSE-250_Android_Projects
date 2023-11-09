@@ -4,124 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_color"
+    android:background="#a3a3c2"
     tools:context=".MainActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/idEdt"
-        android:layout_alignParentTop="true"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:hint="Enter your Note Details"
-        android:layout_above="@id/idLL1"
-        android:background="@color/bg_color"
-        android:gravity="start|top"
-        android:inputType="textImeMultiLine"
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#1C34AE"
+        android:text="Sticky Notes"
+        android:textSize="30sp"
+        android:padding="10sp"
+        android:textStyle="bold"
+        android:textColor="#ffff99"
         />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/idFABSave"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@id/idLL2"
-        android:onClick="saveButton"
-        app:tint="@color/white"
-        android:layout_margin="3dp"
-        android:src="@drawable/ic_save"
-        android:backgroundTint="@color/fab_color"
-        android:layout_alignParentRight="true"
-        />
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/idLL2"
-        android:layout_toStartOf="@id/idFABSave"
-        android:background="@color/bg_color"
-        android:id="@+id/idLL1"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        android:layout_margin="5dp"
-        android:layout_toLeftOf="@id/idFABSave">
+        android:layout_below="@+id/txt_title"
+        android:layout_above="@id/idLL"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="10dp" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="-"
-            android:id="@+id/idBtnReducesize"
-            android:textSize="18sp"
-            android:textStyle="bold"
+    <LinearLayout
+        android:id="@+id/idLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/idLL0"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/idEdt"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/userRecyclerView"
+            android:hint="Enter your Note Details for widget.."
+            android:layout_above="@id/idLL"
+            android:background="@color/bg_color"
+            android:gravity="start|top"
+            android:inputType="textImeMultiLine"
             />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/idTVsize"
-            android:text="12"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_gravity="center"
-            android:textAlignment="center"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:id="@+id/idBtnIncreaseSize"/>
-
-
 
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/idLL0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/idLL2"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:weightSum="3"
-        >
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:text="B"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:id="@+id/idBtnBold"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:text="U"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:id="@+id/idBtnUnderline"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:text="I"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:id="@+id/idBtnitalic"
-            />
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/btn_add_task"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Add task"
+            android:background="#C65522"
+            android:layout_marginRight="70dp"
+            android:padding="10dp"
+            android:layout_alignParentLeft="true"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/idsave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="3dp"
+            android:backgroundTint="@color/purple_200"
+            android:src="@android:drawable/ic_menu_save" />
+
+        <Button
+            android:id="@+id/id_btn_done_task_page"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="70dp"
+            android:padding="10dp"
+            android:background="#CA582A"
+            android:layout_gravity="right"
+            android:text="done task" />
     </LinearLayout>
 
 </RelativeLayout>
