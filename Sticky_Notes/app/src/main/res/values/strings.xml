@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sticky_Notes</string>
+    <string name="Main_Table">Sticky_Notes.db</string>
+    <string name="Done_Table">Done_Notes.db</string>
+</resources>

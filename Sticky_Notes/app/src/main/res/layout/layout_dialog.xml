@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/id_dia_ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:hint="Current Date"
+            android:id="@+id/edit_date"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_date_gen"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/id_dia_ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_dia_ll1"
+        android:orientation="horizontal">
+
+        <EditText
+            android:hint="Current time"
+            android:id="@+id/edit_time"
+            android:layout_below="@+id/edit_date"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_time_gen"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <EditText
+        android:hint="Enter your note.."
+        android:id="@+id/edit_passage"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/id_dia_ll2"
+        android:layout_alignParentStart="true"
+        android:textSize="30sp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/id_dia_ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_passage"
+        android:orientation="horizontal">
+
+        <EditText
+            android:hint="Define Deadline date "
+            android:id="@+id/edit_deadline"
+            android:layout_width="250dp"
+            android:layout_below="@+id/edit_passage"
+            android:layout_alignParentStart="true"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_deadline_gen"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/id_dia_ll4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_dia_ll3"
+        android:orientation="horizontal"        >
+
+        <EditText
+            android:hint="Define deadline reminder"
+            android:id="@+id/edit_reminder"
+            android:layout_width="250dp"
+            android:layout_below="@+id/edit_deadline"
+            android:layout_alignParentStart="true"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_reminder_gen"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/idLL2"
+        android:background="@color/bg_color"
+        android:id="@+id/idLL1"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_margin="5dp">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-"
+            android:id="@+id/idBtnReducesize"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/idTVsize"
+            android:text="12"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:id="@+id/idBtnIncreaseSize"/>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/idLL2"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:weightSum="3"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="B"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:id="@+id/idBtnBold"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="U"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:id="@+id/idBtnUnderline"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="I"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:id="@+id/idBtnitalic"
+            />
+    </LinearLayout>
+</RelativeLayout>
