@@ -2,10 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/go_home"
+        android:title="Go to home"
+        android:icon="@drawable/home"
+        app:showAsAction="always"
+        />
+    <item
         android:id="@+id/delete_all"
         android:title="DeleteAll"
         android:icon="@drawable/ic_delete"
-        app:showAsAction="always"
+        app:showAsAction="never"
         />
 
     <!--        app:showAsAction="always"-->

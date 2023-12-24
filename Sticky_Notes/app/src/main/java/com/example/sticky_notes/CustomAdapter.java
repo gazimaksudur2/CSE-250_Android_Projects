@@ -69,20 +69,25 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 d = String.valueOf(note_txt.get(position));
                 e = String.valueOf(note_deadline.get(position));
                 f = String.valueOf(note_reminder.get(position));
-//                Toast.makeText(context, "Passage is: "+d, Toast.LENGTH_SHORT).show();
                 confirmDialog();
-
-//                Toast.makeText(context, "recycler element clicked..", Toast.LENGTH_SHORT).show();
             }
         });
-
-        // here goes some bug to fix
 
         holder.Btn_task_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.done_id.add(a);
-                Toast.makeText(context, "Button task done clicked..& passed to done tasks", Toast.LENGTH_SHORT).show();
+                a = String.valueOf(note_id.get(position));
+                b = String.valueOf(note_date.get(position));
+                c = String.valueOf(note_time.get(position));
+                d = String.valueOf(note_txt.get(position));
+                e = String.valueOf(note_deadline.get(position));
+                f = String.valueOf(note_reminder.get(position));
+
+                MyDatabaseHelper.done_id.add(a);
+                if (activity != null) {
+                    activity.recreate();
+                }
+//                Toast.makeText(context, "element in done_id : "+MyDatabaseHelper.done_id.size()+"val : "+d+" and element is : "+MyDatabaseHelper.done_id, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -102,15 +107,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 confirmDelete();
-//                Intent intent = new Intent(context, MainActivity.class);
-//                activity.startActivity(intent);
             }
         });
         builder.create().show();
     }
-
     void confirmDelete(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
         builder.setTitle("Delete " + d + " ?");
         builder.setMessage("Are you sure you want to delete " + d + " ?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -118,6 +120,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             public void onClick(DialogInterface dialogInterface, int i) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(context);
                 myDB.deleteOneRow(a);
+//                MyDatabaseHelper.done_id.remove(a);
+                activity.recreate();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

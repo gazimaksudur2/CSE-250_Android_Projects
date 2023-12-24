@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/img" />
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#90000000" /> <!-- #80 is the alpha value (hex) for 50% opacity -->
+        </shape>
+    </item>
+</layer-list>

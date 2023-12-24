@@ -9,11 +9,12 @@ import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "Sticky_Notes.db";
-//    private String DATABASE_NAME;
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE_NAME = "my_notes";
@@ -23,6 +24,8 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_TIME = "time";
     private static final String COLUMN_DEADLINE = "deadline";
     private static final String COLUMN_REMINDER = "reminder";
+    public static ArrayList<String> done_id = new ArrayList<>();
+//    public static ArrayList<String> deleted = new ArrayList<>();
 
     MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,7 +39,6 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_TIME + " TEXT, " + COLUMN_TEXT + " TEXT, " + COLUMN_DEADLINE + " TEXT, " +
                 COLUMN_REMINDER + " TEXT);";
         db.execSQL(query);
-
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
@@ -60,7 +62,6 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }else {
             Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     Cursor readAllData(){
@@ -92,8 +93,6 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }else {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     void deleteOneRow(String row_id){
@@ -111,5 +110,4 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME);
     }
-
 }

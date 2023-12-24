@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Calander_Clock_Access_application" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Calander_Clock_Access_application" parent="Base.Theme.Calander_Clock_Access_application" />
+
+    <style name="DialogTheme" parent = "Theme.Material3.DayNight.Dialog">
+        <item name="colorAccent">@color/black</item>
+    </style>
+</resources>

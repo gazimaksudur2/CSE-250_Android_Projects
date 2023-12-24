@@ -47,7 +47,6 @@ public class UpdateNoteActivity extends MainActivity implements ExampleDialog.Ex
             finish();return;
         }
 
-//        Toast.makeText(this, "passage is : "+passage, Toast.LENGTH_SHORT).show();
         myDB.updateData(id, date, time, passage, deadline, reminder);
         Intent intent = new Intent(UpdateNoteActivity.this, MainActivity.class);
         startActivity(intent);

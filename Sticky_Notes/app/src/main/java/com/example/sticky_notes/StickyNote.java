@@ -25,7 +25,6 @@ public class StickyNote {
         }catch(IOException e){
             e.printStackTrace();
         }
-//        return text.toString();
         return cur_note;
     }
     void setStick(String textTobeSaved, Context context){

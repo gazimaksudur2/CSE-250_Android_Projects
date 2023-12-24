@@ -9,6 +9,7 @@
         android:id="@+id/id_dia_ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="horizontal"
         >
 
@@ -20,8 +21,10 @@
 
         <Button
             android:id="@+id/btn_date_gen"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/calendar_check"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -31,6 +34,7 @@
         android:id="@+id/id_dia_ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_below="@id/id_dia_ll1"
         android:orientation="horizontal">
 
@@ -43,8 +47,10 @@
 
         <Button
             android:id="@+id/btn_time_gen"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/clock_check_1"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -55,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/id_dia_ll2"
         android:layout_alignParentStart="true"
+        android:layout_margin="5dp"
         android:textSize="30sp"
         android:layout_height="wrap_content"/>
 
@@ -63,6 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_passage"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <EditText
@@ -75,8 +83,10 @@
 
         <Button
             android:id="@+id/btn_deadline_gen"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/calendar_check"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -86,6 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_dia_ll3"
+        android:layout_margin="5dp"
         android:orientation="horizontal"        >
 
         <EditText
@@ -98,8 +109,10 @@
 
         <Button
             android:id="@+id/btn_reminder_gen"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/clock_check_1"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

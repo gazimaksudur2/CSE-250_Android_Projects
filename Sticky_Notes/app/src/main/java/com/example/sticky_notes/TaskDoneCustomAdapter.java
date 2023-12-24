@@ -41,14 +41,12 @@ public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAd
         this.note_deadline = note_deadline;
         this.note_reminder = note_reminder;
     }
-
-    TaskDoneCustomAdapter(){}
-
     @NonNull
     @Override
     public MyViewHolder_task onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.noteview_task_done, parent, false);
+
         return new MyViewHolder_task(view);
     }
 
@@ -70,13 +68,34 @@ public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAd
                 d = String.valueOf(note_txt.get(position));
                 e = String.valueOf(note_deadline.get(position));
                 f = String.valueOf(note_reminder.get(position));
-//                Toast.makeText(context, "Passage is: "+d, Toast.LENGTH_SHORT).show();
-                confirmDialog();
+                confirmDialog1();
             }
         });
     }
 
-    void confirmDialog(){
+
+    void confirmDialog1(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Action on existing Note");
+        builder.setMessage("What to do....?");
+        builder.setPositiveButton("Re-Stick", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MyDatabaseHelper.done_id.remove(a);
+                activity.recreate();
+            }
+        });
+        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                confirmDelete();
+            }
+        });
+        builder.create().show();
+    }
+
+    void confirmDelete(){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete " + d + " ?");
         builder.setMessage("Are you sure you want to delete " + d + " ?");
@@ -85,6 +104,8 @@ public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAd
             public void onClick(DialogInterface dialogInterface, int i) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(context);
                 myDB.deleteOneRow(a);
+                MyDatabaseHelper.done_id.remove(a);
+                activity.recreate();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

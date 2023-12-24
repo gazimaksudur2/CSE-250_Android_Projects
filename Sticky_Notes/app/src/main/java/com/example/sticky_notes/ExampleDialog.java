@@ -107,17 +107,13 @@ public class ExampleDialog extends AppCompatDialogFragment {
                 italicBtn.setTextColor(getResources().getColor(R.color.white));
                 italicBtn.setBackgroundColor(getResources().getColor(R.color.purple_200));
                 boolean bl = (editPassage.getTypeface().getStyle()== Typeface.BOLD);
-                // that gives the perfect result on my emulator but not on my Redmi note 10s
                 if(editPassage.getTypeface().isBold()){
                     boldBtn.setTextColor(getResources().getColor(R.color.white));
                     boldBtn.setBackgroundColor(getResources().getColor(R.color.purple_200));
-//                    editPassage.setText(noteEdt.getText()+" true");
                     editPassage.setTypeface(Typeface.DEFAULT);
-//                    editPassage.setText("it is already bold");
                 }else{
                     boldBtn.setTextColor(getResources().getColor(R.color.purple_200));
                     boldBtn.setBackgroundColor(getResources().getColor(R.color.white));
-//                    editPassage.setText(noteEdt.getText()+" false");
                     editPassage.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                 }
             }
@@ -217,41 +213,18 @@ public class ExampleDialog extends AppCompatDialogFragment {
     }
 
     public void openDateDialog(EditText text){
-//        String temp = text.getText().toString().trim();
-//        int day,mon,yr;
-//        day = 25;
-//        mon = 05;
-//        yr = 2023;
-//        if(temp.length()==10){
-//            day = Integer.parseInt(temp.substring(0,1));
-//            mon = Integer.parseInt(temp.substring(5,6));
-//            yr = Integer.parseInt(temp.substring(10,13));
-//        }
-//        String format = "%0" + 2 + "d";
-//        String format1 = "%0" + 4 + "d";
         DatePickerDialog dialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-//                text.setText(String.format(format,String.valueOf(dayOfMonth))+" / "+String.format(format,String.valueOf(month+1))+" / "+String.format(format1,String.valueOf(year)));}}, yr,mon-1,day);
         text.setText(String.valueOf(dayOfMonth)+" / "+String.valueOf(month+1)+" / "+String.valueOf(year));}}, 2023,5-1,25);
         dialog.show();
     }
 
     public void openClockDialog(EditText text2){
-//        String temp = text2.getText().toString().trim();
-//        int hr,min;
-//        hr = 04;
-//        min = 30;
-//        if(temp.length()==5){
-//            hr = Integer.parseInt(temp.substring(0,1));
-//            min = Integer.parseInt(temp.substring(3,4));
-//        }
-//        String format = "%0" + 2 + "d";
         TimePickerDialog dialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                text2.setText(String.format(format,String.valueOf(hourOfDay))+":"+String.format(format,String.valueOf(minute)));
                 text2.setText(String.valueOf(hourOfDay)+":"+String.valueOf(minute));
             }
         }, 04,30, true);

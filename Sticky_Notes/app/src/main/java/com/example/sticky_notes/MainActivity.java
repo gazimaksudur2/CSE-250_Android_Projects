@@ -1,4 +1,6 @@
 package com.example.sticky_notes;
+import static com.example.sticky_notes.MyDatabaseHelper.*;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,7 +41,8 @@ import java.util.TreeSet;
     implement the clock and clock access for each button ----> done
     implement delete operation from database -----> done
     implement new Task done activity for done tasks
-    implement refresh mainactivity using up scrolling recyclerview
+    implement refresh main activity using up scrolling recyclerview
+    implement a loading page
 
     then your app will look so good
 
@@ -47,16 +50,12 @@ import java.util.TreeSet;
 public class MainActivity extends AppCompatActivity{
     private ImageView empty_imageview;
     private FloatingActionButton add_task, make_widget;
-    private TextView no_data;
+    private TextView no_data, done_count, pending_count;
     RecyclerView recyclerView;
     CustomAdapter customAdapter;
     ArrayList<String> id, date, time, notes, deadline, reminder;
-    public static ArrayList<String> done_id;// that will make a bomb busting
-//    public static TreeSet<String> strSet = new TreeSet<>();
-    StickyNote note = new StickyNote();
+    ArrayList<String> done_id;// that will make a bomb busting
     public static MyDatabaseHelper myDB;
-
-    // here is another issue
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +68,8 @@ public class MainActivity extends AppCompatActivity{
         empty_imageview = findViewById(R.id.empty_imageview);
         no_data = findViewById(R.id.no_data);
         make_widget = findViewById(R.id.crt_widget);
+        done_count = findViewById(R.id.done_count);
+        pending_count = findViewById(R.id.pending_count);
 
         myDB = new MyDatabaseHelper(MainActivity.this);
         id = new ArrayList<>();
@@ -77,7 +78,8 @@ public class MainActivity extends AppCompatActivity{
         notes = new ArrayList<>();
         deadline = new ArrayList<>();
         reminder = new ArrayList<>();
-        done_id = new ArrayList<>();
+
+        done_id = MyDatabaseHelper.done_id;
 
         storeDataInArrays();
 
@@ -100,12 +102,10 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        done_count.setText("Done Task -> "+done_id.size());
+        pending_count.setText("Pending Task -> "+id.size());
     }
-
-//    public MyDatabaseHelper shareMyDB(){
-//        return myDB;
-//    }
-
     void storeDataInArrays(){
         Cursor cursor = myDB.readAllData();
         if(cursor.getCount() == 0){
@@ -116,11 +116,19 @@ public class MainActivity extends AppCompatActivity{
                 boolean fl = false;
                 String temp;
                 temp = cursor.getString(0);
-                for(String a : done_id){
-                    if(a==temp){
-                        fl = true;
-                        break;
+                if(done_id!=null){
+                    for(String a : done_id){
+                        if(a.equals(temp)){
+                            fl = true;
+                            break;
+                        }
                     }
+//                    for(String a : MyDatabaseHelper.deleted){
+//                        if(a.equals(temp)){
+//                            fl = true;
+//                            break;
+//                        }
+//                    }
                 }
                 if(fl){continue;}
                 id.add(temp);
@@ -133,6 +141,8 @@ public class MainActivity extends AppCompatActivity{
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
         }
+        Toast.makeText(this, "Total to do task :"+id.size()+" & done tasks : "+done_id.size(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Total to do task :"+id.size()+" & done tasks : "+0, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -149,7 +159,6 @@ public class MainActivity extends AppCompatActivity{
         }
         if(item.getItemId() == R.id.task_done){
             TaskDoneActivity.done_id = done_id;
-            Toast.makeText(this, "in main done task "+done_id.size(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, TaskDoneActivity.class);
             startActivity(intent);
         }
@@ -165,6 +174,7 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(DialogInterface dialogInterface, int i) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(MainActivity.this);
                 myDB.deleteAllData();
+
                 //Refresh Activity
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -179,11 +189,4 @@ public class MainActivity extends AppCompatActivity{
         });
         builder.create().show();
     }
-
-//    public void refresh(){
-//        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-//        startActivity(intent);
-//        recreate();
-//        finish();
-//    }
 }
