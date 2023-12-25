@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAdapter.MyViewHolder_task>{
+public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAdapter.MyViewHolder_task> {
 
     private Context context;
     private Activity activity;
@@ -53,7 +53,6 @@ public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAd
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder_task holder, final int position) {
-        holder.note_id_txt.setText(String.valueOf(note_id.get(position)));
         holder.note_date_txt.setText(String.valueOf(note_date.get(position)));
         holder.note_time_txt.setText(String.valueOf(note_time.get(position)));
         holder.note_passage_txt.setText(String.valueOf(note_txt.get(position)));
@@ -84,6 +83,7 @@ public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAd
             public void onClick(DialogInterface dialog, int which) {
                 MyDatabaseHelper.done_id.remove(a);
                 activity.recreate();
+                Toast.makeText(context, "Re-sticked id --> "+a, Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
@@ -105,6 +105,7 @@ public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAd
                 MyDatabaseHelper myDB = new MyDatabaseHelper(context);
                 myDB.deleteOneRow(a);
                 MyDatabaseHelper.done_id.remove(a);
+                Toast.makeText(context, "deleted id --> "+a, Toast.LENGTH_SHORT).show();
                 activity.recreate();
             }
         });
@@ -122,6 +123,7 @@ public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAd
         return note_id.size();
     }
 
+
     class MyViewHolder_task extends RecyclerView.ViewHolder {
 
         TextView note_id_txt, note_date_txt, note_time_txt, note_passage_txt, note_deadline_txt, note_reminder_txt;
@@ -129,7 +131,6 @@ public class TaskDoneCustomAdapter extends RecyclerView.Adapter<TaskDoneCustomAd
 
         MyViewHolder_task(@NonNull View itemView) {
             super(itemView);
-            note_id_txt = itemView.findViewById(R.id.id);
             note_date_txt = itemView.findViewById(R.id.date);
             note_time_txt = itemView.findViewById(R.id.time);
             note_passage_txt = itemView.findViewById(R.id.notes);

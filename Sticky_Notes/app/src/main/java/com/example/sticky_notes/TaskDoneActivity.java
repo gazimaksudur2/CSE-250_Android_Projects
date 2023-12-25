@@ -29,13 +29,13 @@ import java.util.TreeSet;
 public class TaskDoneActivity extends AppCompatActivity {
     private ImageView empty_imageview;
     private TextView no_data;
-    private Button done_nil,delete_nil;
+    private Button done_nil,go_home;
     RecyclerView recyclerView;
     TaskDoneCustomAdapter taskDoneCustomAdapter;
     ArrayList<String> id, date, time, notes, deadline, reminder;
     public static ArrayList<String> done_id;
     MyDatabaseHelper myDB;
-    Context context;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,8 @@ public class TaskDoneActivity extends AppCompatActivity {
 
         empty_imageview = findViewById(R.id.empty_imageview_task);
         no_data = findViewById(R.id.no_data_task);
+        go_home = findViewById(R.id.go_home);
         done_nil = findViewById(R.id.task_done_nil);
-        delete_nil = findViewById(R.id.delete_clr);
 
         context = TaskDoneActivity.this;
         myDB = MainActivity.myDB;
@@ -68,19 +68,24 @@ public class TaskDoneActivity extends AppCompatActivity {
         recyclerView.setAdapter(taskDoneCustomAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(TaskDoneActivity.this));
 
-        done_nil.setOnClickListener(new View.OnClickListener() {
+        go_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDatabaseHelper.done_id.clear();
+//                Toast.makeText(TaskDoneActivity.this, "in main done task "+done_id.size(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(TaskDoneActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
-//        delete_nil.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                MyDatabaseHelper.deleted.clear();
-//            }
-//        });
+        done_nil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                done_id.clear();
+                Toast.makeText(TaskDoneActivity.this, "All done_id Re-sticked!!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(TaskDoneActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void storeDataInArrays(){
@@ -94,7 +99,6 @@ public class TaskDoneActivity extends AppCompatActivity {
                 temp = cursor.getString(0);
                 for(String a : MyDatabaseHelper.done_id){
                    if(a.equals(temp)){
-                        Toast.makeText(context, "something similar with "+cursor.getString(3), Toast.LENGTH_SHORT).show();
                         id.add(cursor.getString(0));
                         date.add(cursor.getString(1));
                         time.add(cursor.getString(2));
@@ -121,11 +125,11 @@ public class TaskDoneActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.delete_all){
             confirmDialog();
         }
-        if(item.getItemId() == R.id.go_home){
-            Toast.makeText(this, "in main done task "+done_id.size(), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(TaskDoneActivity.this, MainActivity.class);
-            startActivity(intent);
-        }
+//        if(item.getItemId() == R.id.go_home){
+//            Toast.makeText(this, "in main done task "+done_id.size(), Toast.LENGTH_SHORT).show();
+//            Intent intent = new Intent(TaskDoneActivity.this, MainActivity.class);
+//            startActivity(intent);
+//        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -158,5 +162,4 @@ public class TaskDoneActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
-
 }

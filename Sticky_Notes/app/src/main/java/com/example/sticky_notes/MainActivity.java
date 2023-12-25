@@ -49,7 +49,7 @@ import java.util.TreeSet;
  */
 public class MainActivity extends AppCompatActivity{
     private ImageView empty_imageview;
-    private FloatingActionButton add_task, make_widget;
+    private FloatingActionButton add_task, make_widget, done_task;
     private TextView no_data, done_count, pending_count;
     RecyclerView recyclerView;
     CustomAdapter customAdapter;
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity{
         empty_imageview = findViewById(R.id.empty_imageview);
         no_data = findViewById(R.id.no_data);
         make_widget = findViewById(R.id.crt_widget);
+        done_task = findViewById(R.id.task_done);
         done_count = findViewById(R.id.done_count);
         pending_count = findViewById(R.id.pending_count);
 
@@ -99,6 +100,16 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, WidgetViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        done_task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TaskDoneActivity.done_id = done_id;
+                Toast.makeText(MainActivity.this, "Notes in done_id --> "+done_id, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, TaskDoneActivity.class);
                 startActivity(intent);
             }
         });
@@ -141,7 +152,7 @@ public class MainActivity extends AppCompatActivity{
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
         }
-        Toast.makeText(this, "Total to do task :"+id.size()+" & done tasks : "+done_id.size(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Total to do task :"+id.size()+" & done tasks : "+done_id.size(), Toast.LENGTH_SHORT).show();
 //        Toast.makeText(this, "Total to do task :"+id.size()+" & done tasks : "+0, Toast.LENGTH_SHORT).show();
     }
 
@@ -157,11 +168,11 @@ public class MainActivity extends AppCompatActivity{
         if(item.getItemId() == R.id.delete_all){
             confirmDialog();
         }
-        if(item.getItemId() == R.id.task_done){
-            TaskDoneActivity.done_id = done_id;
-            Intent intent = new Intent(MainActivity.this, TaskDoneActivity.class);
-            startActivity(intent);
-        }
+//        if(item.getItemId() == R.id.task_done){
+//            TaskDoneActivity.done_id = done_id;
+//            Intent intent = new Intent(MainActivity.this, TaskDoneActivity.class);
+//            startActivity(intent);
+//        }
         return super.onOptionsItemSelected(item);
     }
 

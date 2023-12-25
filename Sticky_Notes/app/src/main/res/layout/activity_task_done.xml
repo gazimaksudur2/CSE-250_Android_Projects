@@ -59,24 +59,24 @@
         app:layout_constraintTop_toBottomOf="@+id/empty_imageview_task" />
 
     <Button
-        android:id="@+id/task_done_nil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/go_home"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/home"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="30dp"
         android:textStyle="bold|italic"
-        android:layout_marginBottom="30dp"
-        android:text="Clear_done" />
+        android:layout_marginBottom="30dp"/>
 
     <Button
-        android:id="@+id/delete_clr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/task_done_nil"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/done_del"
         android:textStyle="bold|italic"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        android:text="Clear_del" />
+        android:layout_marginBottom="30dp"/>
 
 </RelativeLayout>

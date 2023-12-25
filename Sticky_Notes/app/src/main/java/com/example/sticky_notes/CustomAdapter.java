@@ -54,7 +54,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        holder.note_id_txt.setText(String.valueOf(note_id.get(position)));
         holder.note_date_txt.setText(String.valueOf(note_date.get(position)));
         holder.note_time_txt.setText(String.valueOf(note_time.get(position)));
         holder.note_passage_txt.setText(String.valueOf(note_txt.get(position)));
@@ -175,7 +174,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            note_id_txt = itemView.findViewById(R.id.id);
             note_date_txt = itemView.findViewById(R.id.date);
             note_time_txt = itemView.findViewById(R.id.time);
             note_passage_txt = itemView.findViewById(R.id.notes);

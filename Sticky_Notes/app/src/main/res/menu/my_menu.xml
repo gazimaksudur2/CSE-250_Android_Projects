@@ -7,12 +7,14 @@
         android:icon="@drawable/ic_delete"
         app:showAsAction="never"
         />
-    <item
-        android:id="@+id/task_done"
-        android:title="Done task"
-        android:icon="@drawable/baseline_done_24"
-        app:showAsAction="always"
-        />
+
+
+<!--    <item-->
+<!--        android:id="@+id/task_done"-->
+<!--        android:title="Done task"-->
+<!--        android:icon="@drawable/baseline_done_24"-->
+<!--        app:showAsAction="always"-->
+<!--        />-->
 
     <!--        app:showAsAction="always"-->
 
