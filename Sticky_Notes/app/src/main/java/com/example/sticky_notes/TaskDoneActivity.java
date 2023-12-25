@@ -57,7 +57,7 @@ public class TaskDoneActivity extends AppCompatActivity {
         deadline = new ArrayList<>();
         reminder = new ArrayList<>();
 
-        //here I'm facing some major bug
+        //here I'm facing some major bug here something that I've changed
         done_id = MyDatabaseHelper.done_id;
 
         Toast.makeText(context, "done id count : "+done_id.size()+"& note appears "+date.size()+"pcs & done->"+done_id, Toast.LENGTH_SHORT).show();
